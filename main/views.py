@@ -14,10 +14,8 @@ def index(request):
             return render(request, 'locator.html', {"form": form, "queries": forward_geocode(resp)}) 
     else:
          form = GeolocatorStatsForm()   
-    if resp!="":     
-        context = {"form": form, "queries": forward_geocode(resp)} 
-    else:
-        context = {"form": form}        
+    
+    context = {"form": form}        
     return render(request, 'locator.html', context=context)
 
 def forward_geocode(address, format='json'):
