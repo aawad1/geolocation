@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+
+{% block history %}
+<h1>this is history</h1>
+{{history}}
+<table class="table striped-table text-light">
+    <thead>
+        <tr>
+            <th scope="col text-light">ID</th>
+            <th scope="col text-light">Query</th>
+            <th scope="col text-light">Latitude</th>
+            <th scope="col text-light">Longitude</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in history %}
+        <tr>
+            <td class="text-light">{{item.id}}</td>
+            <td class="text-light">{{item.query}}</td>
+            <td class="text-light">{{item.latitude}}</td>
+            <td class="text-light">{{item.longitude}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

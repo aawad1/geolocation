@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/my_styles.css' %}">
+
+{% endblock %}
+
+{% block about %}
+<div class="container mt-5">
+    <div class="custom-card text-light border-0"> <!-- Added border-0 class -->
+        <h5 class="card-title">About GeoLocator</h5>
+        <p class="card-text">Welcome to GeoLocator, your go-to tool for geolocating and exploring the world!</p>
+        <div class="content-container blurred-background text-light">
+            <p><strong>What is Geolocating?</strong> - Geolocation is the process of identifying the geographical location of a person or device by means of digital information. GeoLocator allows you to determine the coordinates of a location based on various input methods.</p>
+            <p class="blurred-background"><strong>Creation and Founders</strong> - GeoLocator was created with passion and curiosity. It was founded on February 14th by Mehmed Kadrić and Abdullah Awad, two enthusiasts who share a love for geography and technology.</p>
+            <p class="blurred-background"><strong>Explore the World</strong> - Discover interesting details about different places, learn about their geography, and unleash the power of geolocation with GeoLocator.</p>
+            <p class="blurred-background"><strong>Did You Know?</strong> - GeoLocator processes data with lightning speed, allowing you to find the exact location of a place within seconds. Dive into the fascinating world of coordinates and geographical information!</p>
+        </div>
+        <div class="blurred-background">
+            <p class="">Thank you for using GeoLocator!</p>
+        </div>
+        <div class="blurred-background text-right">
+            <small>Created on February 14th</small>
+        </div>
+    </div>
+</div>
+
+<div class="trademark">
+    By Mehmed and Abdullah since January 2024
+</div>
+
+
+
+{% endblock %}
