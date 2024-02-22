@@ -1,28 +1,46 @@
 {% extends 'main.html' %}
 
 {% block history %}
-<h1>this is history</h1>
-{{history}}
+<h1>Search history</h1>
 <table class="table striped-table text-light">
     <thead>
         <tr>
-            <th scope="col text-light">ID</th>
-            <th scope="col text-light">Query</th>
+            <th scope="col text-light">No.</th>
+            <th scope="col text-light">Feature Name</th>
             <th scope="col text-light">Latitude</th>
             <th scope="col text-light">Longitude</th>
         </tr>
     </thead>
     <tbody>
-        {% for item in history %}
+        {% for item in history %}  
+        {%with num=item.id|add:'-269' %}
         <tr>
-            <td class="text-light">{{item.id}}</td>
-            <td class="text-light">{{item.query}}</td>
-            <td class="text-light">{{item.latitude}}</td>
-            <td class="text-light">{{item.longitude}}</td>
+            <td class="text-light">{{ num }}</td>
+            <td class="text-light">{{ item.query }}</td>
+            <td class="text-light">{{ item.latitude }}</td>
+            <td class="text-light">{{ item.longitude }}</td>
         </tr>
+        {% endwith %}
         {% endfor %}
     </tbody>
 </table>
+<!-- Display pagination links -->
+<div class="pagination">
+    <span class="step-links">
+        {% if history.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ history.previous_page_number }}">previous</a>
+        {% endif %}
 
+        <span class="current">
+            Page {{ history.number }} of {{ history.paginator.num_pages }}.
+        </span>
+
+        {% if history.has_next %}
+            <a href="?page={{ history.next_page_number }}">next</a>
+            <a href="?page={{ history.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 
 {% endblock %}

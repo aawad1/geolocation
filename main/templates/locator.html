@@ -5,8 +5,32 @@
 <link rel="stylesheet" type="text/css" href="{% static 'main/css/my_styles.css' %}">
 {% endblock %}
 
-{% block content %}
 
+{% block content %}
+<style>
+    /* Center the iframe */
+    .map-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px
+    }
+
+    /* Give the iframe a border */
+    .map-frame {
+        border: 2px solid #333; /* Adjust the border color and size as needed */
+        border-radius: 10px; /* Adjust border radius as needed */
+        overflow: hidden; /* Ensure the border is not covered by the iframe */
+        width: 700px; /* Set the width of the iframe */
+        height: 350px; /* Set the height of the iframe */
+    }
+
+    /* Make the iframe fill the container */
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+</style>
 
 <div class="row d-flex justify-content-center">
     <h1 class="p-3 text-center">
@@ -19,11 +43,19 @@
         <form method="post" action="{%url 'homepage'%}" >
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-outline-light">Submit</button>
         </form>
     </div>
 </div>
-<!--{{ stats }}-->
+
+{% if queries is none %}
+<div class="map-container">
+    <div class="map-frame">
+        <iframe src="https://api.maptiler.com/maps/basic-v2/?key=BN4670nxjja3u5ALByjq#0.7/16.20423/16.64662" frameborder="0"></iframe>
+    </div>
+</div>  
+{% endif %}
+
 {% if queries is not none %}
     <div class="row d-flex justify-content-start blurred-background text-light">
         <div class="col-md-6">
@@ -32,13 +64,20 @@
             <p><strong>Longitude:</strong> {{ queries.lon }}</p>
         </div>
     </div>
-{% elif queries is none %}
+    <div class="map-container">
+        <div class="map-frame">
+            <iframe width="700" height="350" src="https://api.maptiler.com/maps/basic-v2/?key=BN4670nxjja3u5ALByjq#15/{{queries.lat}}/{{queries.lon}}"></iframe>
+        </div>
+    </div>  
+
+{% elif error is not none %}
     <div class="row d-flex justify-content-start blurred-background text-light">
         <div class="col-md-6">
-            <p><strong>There is an error with input, please input again!</strong></p>
+            <p><strong>{{error}}</strong></p>
         </div>
     </div>
-        
 {% endif %}
+
+
 
 {% endblock %}

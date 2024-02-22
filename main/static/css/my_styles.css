@@ -3,7 +3,7 @@
 .blurred-background {
     position: relative;
     overflow: hidden;
-    padding: 100px;
+    padding: 20px;
 }
 
 .blurred-background:before {
@@ -18,70 +18,13 @@
     transform: scale(1.2); /* Adjust the scale factor as needed */
 }
 
-.list-group-mine {
-    background-color: #c3c3c3;
-    border-top: 1px solid #0091b5;
-    border-left-color: #fff;
-    border-right-color: #fff;
-  }
-  
-  .list-group-mine .list-group-item:hover {
-    background-color: red;
-  }
-
-/* Blurred button */
-.btn-blurred {
-    background: rgba(255, 255, 255, 0.5); /* Adjust the opacity as needed */
-    backdrop-filter: blur(2px); /* Adjust the blur effect as needed */
-    color: #fff; /* Text color */
-}
-
-/* Additional styling for the button if necessary */
-.btn-blurred:hover {
-    background: rgba(255, 255, 255, 0.7); /* Adjust the hover opacity as needed */
-}
-
-.btn-white-opaque {
-    background-color: rgba(255, 255, 255, 0.9);
-    /* Set the background color to white with 90% opacity */
-    border: 1px solid #fff; /* Add border to maintain visibility */
-    color: #000; /* Set text color */
-    transition: background-color 0.3s; /* Add transition for smooth hover effect */
-}
-
-.btn-white-opaque:hover {
-    background-color: rgba(255, 255, 255, 1);
-    /* Change background color to fully opaque white on hover */
-    color: #000; /* Set text color on hover if needed */
-}
-
 .trademark {
     position: fixed;
-    bottom: 100px;
-    right: 100px;
+    bottom: 0px;
+    right: 0px;
     margin: 10px;
     padding: 5px;
-    background-color: rgba(255, 255, 255, 0.5);
     color: #fff;
     font-size: 12px;
     font-style: italic;
 }   
-.block {
-    position: fixed;
-    background: #2184cd;
-    color: #fff;
-    padding: 20px;
-    width: 400px;
-}
-
-.bottomright {
-    position: fixed;
-    bottom: 100px;
-    right: 100px;
-}
-
-.demo {
-    background-color: HotPink;
-    padding: 20px;
-    margin: 5px;
-}
