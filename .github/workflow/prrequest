@@ -1,0 +1,10 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  - name: Run tests
+    run: |
+      python manage.py test
+      
