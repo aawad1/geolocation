@@ -46,6 +46,7 @@ To install GeoLocator locally, follow these steps:
    
 4. **Run Migrations:**
    ```bash
+   python manage.py makemigrations
    python manage.py migrate
 
 5. **Run the Server:**
@@ -53,6 +54,13 @@ To install GeoLocator locally, follow these steps:
    python manage.py runserver
 
 6. Open your web browser and go to http://localhost:8000/ to access GeoLocator.
+
+
+After running the server you should be able to see the following:   
+![homepage empty](https://github.com/aawad1/geolocation/assets/64801031/d6b07196-1f46-4c1e-bf40-f751575c0896)
+![homepage coordinates](https://github.com/aawad1/geolocation/assets/64801031/eb046a3b-b72b-4a06-867b-096388265c1a)
+![homepage sarajevo](https://github.com/aawad1/geolocation/assets/64801031/910434df-a2d9-4bcc-a783-f677f02b7e93)
+![history](https://github.com/aawad1/geolocation/assets/64801031/5d85b100-694b-499b-a231-8ab33a114d10)
 
 ## Contributors
 
