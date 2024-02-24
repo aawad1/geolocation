@@ -1,0 +1,30 @@
+/* your_styles.css */
+
+.blurred-background {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.blurred-background:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    filter: blur(10px); /* Adjust the blur radius as needed */
+    transform: scale(1.2); /* Adjust the scale factor as needed */
+}
+
+.trademark {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    margin: 10px;
+    padding: 5px;
+    color: #fff;
+    font-size: 12px;
+    font-style: italic;
+}   

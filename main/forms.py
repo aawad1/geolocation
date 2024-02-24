@@ -9,3 +9,10 @@ class GeolocatorStatsForm(forms.ModelForm): #indicira da se radi o formi kreiran
         super(GeolocatorStatsForm, self).__init__(*args, **kwargs)
         self.fields['query'].widget.attrs.update({"class": "form-control", "placeholder": "Enter geocoding query"})
     
+class  GeolocatorStatsFormHistory(forms.ModelForm):
+    class Meta:
+        model=GeolocatorStats
+        fields=["query", "latitude", "longitude"]
+    def __init__(self, *args, **kwargs):
+        super(GeolocatorStatsForm, self).__init__(*args, **kwargs)
+        self.fields['query'].widget.attrs.update({"class": "form-control", "placeholder": "Enter geocoding query"})
