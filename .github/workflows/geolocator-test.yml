@@ -28,6 +28,4 @@ jobs:
 
     - name: Run Tests
       run: |
-          
-          cd geolocation
           python manage.py test
