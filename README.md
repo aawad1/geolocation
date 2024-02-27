@@ -38,7 +38,7 @@ To install GeoLocator locally, follow these steps:
    
 2. **Navigate to Project Folder:**
    ```bash
-   cd GeoLocator
+   cd geolocation
 
 3. **Install Dependencies:**
    ```bash
