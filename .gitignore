@@ -5,6 +5,9 @@ __pycache__/
 
 # Migrations
 migrations/
+Migrations*
+migrations/*
+
 
 # C extensions
 *.so
