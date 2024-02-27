@@ -34,7 +34,7 @@ To install GeoLocator locally, follow these steps:
 
 1. **Clone Repository:**
    ```bash
-   git clone https://github.com/your-username/GeoLocator.git
+   git clone https://github.com/aawad1/geolocation.git
    
 2. **Navigate to Project Folder:**
    ```bash
