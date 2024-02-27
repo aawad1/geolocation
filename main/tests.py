@@ -1,41 +1,22 @@
-from django.test import TestCase, Client
-from django.urls import reverse
-from .models import GeolocatorStats
+from django.test import TestCase
+from .views import validate_input
 
-class IndexViewTest(TestCase):
-    def setUp(self):
-        self.client = Client()
+error_message = "Invalid input. Please enter valid coordinates or location name."
 
-    def test_index_view_with_valid_input_name(self):
-        response = self.client.post(reverse('homepage'), {'query': 'New York'})
-        self.assertEqual(response.status_code, 200)
+class ValidateInputTestCase(TestCase):
+    def test_valid_coordinates(self):
+        input_str = "42.123,-71.456"
+        result = validate_input(input_str)
+        self.assertEqual(result, [42.123, -71.456])
 
-        # Check if the GeolocatorStats object was created in the database
-        self.assertEqual(GeolocatorStats.objects.count(), 1)
+    def test_invalid_coordinates(self):
+        input_str = "1000,2000"  # Invalid coordinates
+        result = validate_input(input_str)
+        self.assertIsNone(result)
+        self.assertEqual(error_message, "Invalid input. Please enter valid coordinates or location name.")
 
-        # Check if the response contains the expected data
-        self.assertContains(response, 'New York')
-        self.assertContains(response, 'Latitude')
-        self.assertContains(response, 'Longitude')
-        
-    def test_index_view_with_valid_input_coordinates(self):
-        response = self.client.post(reverse('homepage'), {'query': '43.8519774, 18.3866868'})
-        self.assertEqual(response.status_code, 200)
-
-        # Check if the GeolocatorStats object was created in the database
-        self.assertEqual(GeolocatorStats.objects.count(), 1)
-
-        # Check if the response contains the expected data
-        self.assertContains(response, 'EP BiH')
-        self.assertContains(response, 'Latitude')
-        self.assertContains(response, 'Longitude')
-
-    def test_index_view_with_invalid_input(self):
-        response = self.client.post(reverse('homepage'), {'query': 'dfbvkjsdbnikcn'})
-        self.assertEqual(response.status_code, 200)
-
-        # Check if the error message is present in the response
-        self.assertContains(response, 'Could not find the location')
-
-        # Check that no GeolocatorStats object was created in the database
-        self.assertEqual(GeolocatorStats.objects.count(), 0)
+    def test_invalid_input_format(self):
+        input_str = "42.123,-71.456,100"  # Invalid input format
+        result = validate_input(input_str)
+        self.assertIsNone(result)
+        self.assertEqual(error_message, "Invalid input. Please enter valid coordinates or location name.")

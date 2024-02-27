@@ -57,13 +57,25 @@
 {% endif %}
 
 {% if queries is not none %}
-    <div class="row d-flex justify-content-start blurred-background text-light">
-        <div class="col-md-6">
-            <p><strong>Name:</strong> {{ queries.display_name }}</p>
-            <p><strong>Latitude:</strong> {{ queries.lat }}</p>
-            <p><strong>Longitude:</strong> {{ queries.lon }}</p>
+<div class="row p-3">
+    <div class="col-sm-6 offset-sm-3 border rounded bg-secondary bg-gradient bg-opacity-25">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <p class="p-1">{{ queries.display_name }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <p>
+                    <button class="btn btn-outline-light" onclick="copyToClipboard('{{ queries.lat }}, {{ queries.lon }}')">{{ queries.lat }}, {{ queries.lon }}</button>
+                </p>
+            </div>
         </div>
     </div>
+</div>
+
+
+
     <div class="map-container">
         <div class="map-frame">
             <iframe width="700" height="350" src="https://api.maptiler.com/maps/basic-v2/?key=BN4670nxjja3u5ALByjq#15/{{queries.lat}}/{{queries.lon}}"></iframe>
@@ -77,7 +89,30 @@
         </div>
     </div>
 {% endif %}
+{% endblock %}
 
+{% block javascript %}
+<script>
+function copyToClipboard(text) {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
 
+        const message = document.createElement('div');
+        message.textContent = 'Location coordinates copied to clipboard: ' + text;
+        message.classList.add('alert', 'alert-success', 'position-fixed', 'bottom-0', 'end-0', 'mb-4', 'me-4', 'animate__animated', 'animate__slideInRight');
+        document.body.appendChild(message);
 
+        setTimeout(function() {
+            message.classList.remove('animate__slideInRight');
+            message.classList.add('animate__slideOutRight');
+            setTimeout(function() {
+                document.body.removeChild(message);
+            }, 500); // Animation duration is 0.5 seconds (500 milliseconds)
+        }, 1000); // Remove the message after 1 second (1000 milliseconds)
+    }
+</script>
 {% endblock %}
