@@ -13,14 +13,12 @@
     </thead>
     <tbody>
         {% for item in history %}  
-        {%with num=item.id|add:'-269' %}
         <tr>
-            <td class="text-light">{{ num }}</td>
+            <td class="text-light">{{ forloop.counter0|add:history.start_index }}</td>
             <td class="text-light">{{ item.query }}</td>
             <td class="text-light">{{ item.latitude }}</td>
             <td class="text-light">{{ item.longitude }}</td>
         </tr>
-        {% endwith %}
         {% endfor %}
     </tbody>
 </table>
